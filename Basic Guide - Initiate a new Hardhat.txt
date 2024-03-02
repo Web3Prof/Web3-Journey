@@ -1,0 +1,40 @@
+Basic - Initiate a new Hardhat project:
+
+Pastikan sudah punya wallet khusus untuk dev dan environment sudah siap untuk local smart contract development. (https://github.com/Web3Prof/Web3-Journey/blob/main/Getting%20Started%20as%20a%20Web3%20Developer.pdf)
+
+Tambahan node module: dotenv -> untuk baca environment variable di file ".env"
+
+1. Bikin folder baru untuk project.
+2. Buka terminal di folder atau buka folder di VS Code, dan klik tab terminal.
+3. Run command:
+npx hardhat init
+
+Pilih: empty hardhat config.
+
+4. Bikin folder "contracts" dan "scripts". file ".env" dan ".gitignore".
+
+.env biasa diisi private key wallet deployer, dan API key.
+
+Umumnya untuk API key network untuk deploy ke network itu, bisa dari Infura.
+Untuk verify smart contract via API key chain explorer, misal Etherscan (tergantung network).
+
+.gitignore untuk kasih tau file dan folder apa yang jangan ikut dinaikkin ke Git. Biasa isinya:
+
+.env
+node_modules
+cache
+artifacts
+
+5. Setting config hardhat.config.js.
+Sesuaikan versi solidity, import hardhat toolbox (npm install kalau belum ada), dotenv dan environment variables.
+
+require("@nomicfoundation/hardhat-toolbox");
+require('dotenv').config();
+
+const PRIVATE_KEY = process.env.PRIVATE_KEY ?? "";
+const GOERLI_API_KEY = process.env.GOERLI_API_KEY ?? "";
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY ?? "";
+
+
+Note:
+Kalau ngga mau install node module tiap bikin project baru, bisa installnya di folder berisi project-project kalian atau install secara global.
